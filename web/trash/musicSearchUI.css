@@ -1,0 +1,313 @@
+body {
+  font-family: "Source Sans Pro";
+  background: #f3f3f3;
+  margin: 40px;
+}
+h1 {
+  font-family: "Montserrat";
+}
+.site-canvas {
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 350px;
+  height: 100%;
+  min-height: 480px;
+  background: #fff;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3);
+  background-color: #0093e9;
+  background-image: -webkit-linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  background-image: -moz-linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  background-image: -o-linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  overflow: hidden;
+}
+
+.search-view,
+.playlists-view,
+.downloads-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+  transition: 250ms ease-in-out;
+}
+.site-canvas[data-view="search"] .search-view,
+.site-canvas[data-view="playlists"] .playlists-view,
+.site-canvas[data-view="downloads"] .downloads-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.site-canvas[data-view="playlists"] .search-view,
+.site-canvas[data-view="downloads"] .search-view,
+.site-canvas[data-view="downloads"] .playlists-view {
+  transform: translate3d(-100%, 0, 0);
+}
+
+header {
+  position: absolute;
+  top: 26vh;
+  left: 0;
+  right: 0;
+  height: 80px;
+  transform: scale(1.6);
+  transition: 350ms ease-in-out;
+}
+.site-canvas.results .search-view header,
+.site-canvas .playlists-view header,
+.site-canvas .downloads-view header {
+  top: 50px;
+  transform: scale(1);
+}
+
+header .logo {
+  color: #fff;
+  font-family: "Montserrat";
+  font-size: 1.8em;
+  font-weight: 700;
+  text-align: center;
+  line-height: 80px;
+}
+
+header.align-left .logo {
+  margin-left: 20px;
+  text-align: left;
+}
+
+header .create-playlist {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 20px;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+header .create-playlist:before,
+header .create-playlist:after {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 16px;
+  height: 2px;
+  background: #fff;
+  content: "";
+}
+header .create-playlist:after {
+  width: 2px;
+  height: 16px;
+}
+
+.search-bar {
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  right: 0;
+  padding: 0 40px;
+  height: 40px;
+  box-sizing: border-box;
+  transition: 350ms ease-in-out;
+}
+.site-canvas.results .search-bar {
+  top: 130px;
+}
+.search-bar input,
+.search-bar input:focus {
+  width: 100%;
+  padding: 8px 8px 8px 28px;
+  border: 0;
+  border-radius: 4px;
+  background: #fff;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro";
+  font-size: 0.9em;
+  outline: 0px solid transparent;
+}
+.site-canvas.results .search-bar input {
+  background: rgba(255, 255, 255, 0.8);
+}
+.site-canvas.results .search-bar input:focus {
+  background: #fff;
+}
+.search-bar:before {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  bottom: 0;
+  width: 28px;
+  height: 34px;
+  background: url(https://feathericons.com/node_modules/feather-icons/dist/icons/search.svg)
+    50% 50% / 60% no-repeat;
+  content: "";
+}
+
+.main-list {
+  position: absolute;
+  top: 180px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: 350ms bottom ease-in-out;
+}
+.site-canvas.file-loaded .main-list {
+  bottom: 100px;
+}
+.main-list_item {
+  margin: 0 20px;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  clear: both;
+  cursor: pointer;
+}
+.main-list_item:last-child {
+  border: 0;
+}
+.main-list_item .title {
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 400;
+  text-align: center;
+}
+
+.results-loader {
+  position: absolute;
+  margin: auto;
+  top: 30vh;
+  left: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #fff;
+  border-radius: 100%;
+  border-left-color: transparent;
+  box-sizing: border-box;
+  animation: 1s spin linear infinite;
+  transition: 350ms ease-in-out;
+  opacity: 0;
+}
+.site-canvas.results .results-loader {
+  top: 190px;
+  opacity: 1;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.mini-player {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 15px 0;
+  transform: translate3d(0, 100%, 0);
+  transition: 350ms ease-in-out;
+  text-align: center;
+}
+.site-canvas.results.file-loaded .mini-player {
+  transform: translate3d(0, 0, 0);
+}
+.play-pause,
+.rewind,
+.fastforward {
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  display: inline-block;
+  cursor: pointer;
+}
+.play-pause:before,
+.rewind:before,
+.fastforward:before {
+  width: 50px;
+  height: 50px;
+  background: url(https://feathericons.com/node_modules/feather-icons/dist/icons/play.svg)
+    60% 50% / 55% no-repeat;
+  filter: invert(1);
+  display: block;
+  content: "";
+}
+.rewind:before {
+  background: url(https://feathericons.com/node_modules/feather-icons/dist/icons/rewind.svg)
+    40% 50% / 50% no-repeat;
+}
+.fastforward:before {
+  background: url(https://feathericons.com/node_modules/feather-icons/dist/icons/fast-forward.svg)
+    60% 50% / 50% no-repeat;
+}
+.play-pause.paused:before {
+  background: url(https://feathericons.com/node_modules/feather-icons/dist/icons/pause.svg)
+    50% 50% / 50% no-repeat;
+}
+
+.tabs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+}
+.tabs span {
+  width: 33.333%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  float: left;
+  transition: 150ms ease-in-out;
+  user-select: none;
+}
+.tabs span:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.activeTab {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 33.333%;
+  background: #fff;
+  opacity: 0.6;
+  transition: 150ms ease-in-out;
+}
+.site-canvas[data-view="playlists"] .activeTab {
+  transform: translate3d(100%, 0, 0);
+}
+.site-canvas[data-view="downloads"] .activeTab {
+  transform: translate3d(200%, 0, 0);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.2);
+}

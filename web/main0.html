@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+    <title>main0</title>
+</head>
+
+<body>
+
+    <div id="box">
+        <div id="search-box">
+            <h1 id="title" class="animated swing">
+                <span>L</span><span>y</span><span>r</span><span>i</span><span>c</span><span>l</span><span>e</span>
+            </h1>
+            <form>
+                <input id="search" type="text" placeholder="곡을 입력해주세요." />
+                <input id="search-btn" type="submit" value="검색" />
+            </form>
+        </div>
+        <!-- <div id="spinner-box">
+            <i id="spinner" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </div> -->
+        <!-- <img src="https://static.wixstatic.com/media/c837a6_d716e461cc424c3c926ed4a2e81779e6~mv2.gif" alt="Episodes"
+        style="width:170px;height:169px;object-fit:cover" fetchpriority="high"> -->
+        <!-- <div id="search-result">
+            <ul id="music-result">
+                {{#each musics}}
+                <li class="music-box">
+                    <img class="img" src={{image}}>
+                    <div class="info">
+                        <h3 class="info-color">{{title}} <span>{{singer}}</span></h3>
+                        <p class="info-color info-linehight">{{attrs.lyric}} / {{attrs.genre}} / {{attrs.pubdate}}</p> -->
+        <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+        <!-- </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div> -->
+    </div>
+
+
+    <script type="text/x-handlebars-template" id="musics-template">
+        <ul id="music-result">
+        {{#each musics}}
+          <li class="music-box">
+            <img class="img" src={{image}}>
+            <div class="info">
+              <h3 class="info-color">{{title}} <span>{{singer}}</span></h3>
+              <p class="info-color info-linehight">{{attrs.lyric}} / {{attrs.genre}} / {{attrs.pubdate}}</p>
+              <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+            </div>
+          </li>
+        {{/each}}
+        </ul>
+    </script>
+</body>
+
+</html>
+
+
+<!--필요항목 ; 발매일 장르 가수 제목 가사 이미지 -->

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+    <title>main1</title>
+</head>
+
+<body>
+
+    <div id="box">
+        <div id="search-box">
+            <h1 id="title" class="animated swing">
+                <span>L</span><span>y</span><span>r</span><span>i</span><span>c</span><span>l</span><span>e</span>
+            </h1>
+            <form>
+                <input id="search" type="text" placeholder="곡을 입력해주세요." />
+                <input id="search-btn" type="submit" value="검색" />
+            </form>
+        </div>
+        <!-- <div id="spinner-box">
+            <i id="spinner" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </div> -->
+        <!-- <img src="https://static.wixstatic.com/media/c837a6_d716e461cc424c3c926ed4a2e81779e6~mv2.gif" alt="Episodes"
+        style="width:170px;height:169px;object-fit:cover" fetchpriority="high"> -->
+        <div id="user-guide">
+            <p>곡을 선택해주세요.</p>
+        </div>
+        <div id="search-result">
+            <ul id="music-result">
+
+                <li class="music-box">
+                    <img class="img"
+                        src="http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/796/229/80796229_1457442236845_1_600x600.JPG">
+                    <div class="info">
+                        <h3 class="info-color">한숨 <span>이하이</span></h3>
+                        <p class="info-color info-linehight">숨을 크게 쉬어봐요
+                            당신의 가슴 양쪽이 저리게
+                            조금은 아파올 때까지
+                            숨을 더 뱉어봐요 / R&B /
+                            2016.03.09</p>
+                        <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+                    </div>
+                </li>
+                <li class="music-box">
+                    <img class="img"
+                        src="data:image/jpeg;base64,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">
+                    <div class="info">
+                        <h3 class="info-color">한숨 <span>양다일</span></h3>
+                        <p class="info-color info-linehight">깊은 한숨이 시작해 약속한 것처럼
+                            우린 함께하고 있어 이유도 잊은 채
+                            진심을 가리고 외면하고 나면
+                            언제나 그렇듯 내가 싫어져 / R&B /
+                            2021.01.22</p>
+                        <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+                    </div>
+                </li>
+                <li class="music-box">
+                    <img class="img" src="https://image.bugsm.co.kr/album/images/500/40818/4081893.jpg">
+                    <div class="info">
+                        <h3 class="info-color">한숨 <span>최유리</span></h3>
+                        <p class="info-color info-linehight">우리 두 손 마주 잡고 걸을 때
+                            사랑 가득한 눈빛에 난 또
+                            숨 쉬어가곤 해 나에겐 큰 쉼이 돼주니
+                            네가 나를 바라보며 걸을 때 / 발라드 / 2022.11.30</p>
+                        <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+                    </div>
+                </li>
+                <li class="music-box">
+                    <img class="img" src="https://image.bugsm.co.kr/album/images/500/202823/20282321.jpg">
+                    <div class="info">
+                        <h3 class="info-color">한숨 <span>연규성</span></h3>
+                        <p class="info-color info-linehight">홀로 걷는 이 길의
+                            적막뿐인 공기 속에서
+                            내 귓가에 울리는
+                            홀로 걷는 발자국 소리 / 발라드 / 2019.10.17</p>
+                        <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+                    </div>
+                </li>
+                <li class="music-box">
+                    <img class="img"
+                        src="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/068/524/733/68524733_1399621895212_1_600x600.JPG">
+                    <div class="info">
+                        <h3 class="info-color">한숨 <span>엠씨더맥스</span></h3>
+                        <p class="info-color info-linehight">오늘따라 저 하늘이
+                            너무나 눈부셔
+                            눈물이 흐르네
+                            불어오는 이 바람결이 / 발라드 / 2008.09.30</p>
+                        <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+    <script type="text/x-handlebars-template" id="musics-template">
+        <ul id="music-result">
+        {{#each musics}}
+          <li class="music-box">
+            <img class="img" src={{image}}>
+            <div class="info">
+              <h3 class="info-color">{{title}} <span>{{singer}}</span></h3>
+              <p class="info-color info-linehight">{{attrs.lyric}} / {{attrs.genre}} / {{attrs.pubdate}}</p>
+              <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+            </div>
+          </li>
+        {{/each}}
+        </ul>
+    </script>
+</body>
+
+</html>
+
+
+<!--필요항목 ; 발매일 장르 가수 제목 가사 이미지 -->

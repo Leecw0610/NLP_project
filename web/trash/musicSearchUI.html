@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="musicSearchUI.css">
+    <script src="musicSearchUI.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="site-canvas" id="app" v-bind:class="{'results' : search, 'file-loaded' : sound.file, }"
+        v-bind:data-view="view">
+        <div class="search-view">
+            <div class="main-list" v-if="searchResults">
+                <div class="main-list_item" v-for="item in [0,0,0,0,0,0,0,0,0,0,0,0]" v-on:click="playSong(item)">
+                    <div class="title">
+                        <div>Lorem, ipsum dolor sit amet.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="results-loader" v-if="!searchResults"></div>
+            <div class="mini-player" v-bind:class="{'loaded-file':  sound.file }">
+                <div class="rewind" v-on:click="searchResultss()"></div>
+                <div class="play-pause" v-bind:class="{'paused' : sound.playing }"
+                    v-on:click="sound.playing = !sound.playing"></div>
+                <div class="fastforward"></div>
+            </div>
+            <header>
+                <div class="logo">eepz</div>
+            </header>
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." v-model="search">
+            </div>
+</body>
+
+
+</html>
