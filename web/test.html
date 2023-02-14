@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+
+    <div id="search-result">
+        <ul id="music-result">
+            <li class="music-box">
+                <img class="img"
+                    src="http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/796/229/80796229_1457442236845_1_600x600.JPG">
+                <div class="info">
+                    <h3 class="info-color">한숨 <span>이하이</span></h3>
+                    <p class="info-color info-linehight">숨을 크게 쉬어봐요
+                        당신의 가슴 양쪽이 저리게
+                        조금은 아파올 때까지
+                        숨을 더 뱉어봐요</p>
+                    <div id="genre">R&B</div>
+                    <div id="release">2016.03.09</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        let xhttp = new XMLHttpRequest();
+
+
+        fetch("http://54.199.119.248:8999/search?keyword=내거친").then(function (response) {
+            console.log(response.json())
+        });
+
+
+        console.log(data_JSON)
+
+
+        function jsonfunc(jsonText) {
+
+            let json = JSON.parse(jsonText);
+
+            let txt = " ";
+
+            var t = 0
+
+            document.getElementById('search-result')
+
+            for (var object in json) {
+                console.log(json[object]['제목'])
+
+                var id = json[object][6] //고유 아이디
+
+                let new_musicbox = document.createElement('li')
+
+                new_musicbox.setAttribute('id', id)
+
+                let tagArea = document.getElementById('music-result');
+                tagArea.appendChild(new_musicbox)
+
+                let info = document.createElement('div')
+                info.setAttribute('id', 'info')
+                info.innerHTML = json[object]['제목']
+
+                let musicArea = document.getElementById(id)
+                musicArea.appendChild(info)
+
+                t = t + 1
+
+            }
+
+
+        }
+
+        ```<li class="music-box" , style="background: rgb(255, 110, 110);">
+                <div class="img">
+                    <img src="json[4]">
+                </div>
+                <div class="info">
+                    <h3 class="info-color">json[0] <span>json[5]</span></h3>
+                    <p class="info-color info-linehight">json[3]</p>
+                    <div id="genre">json[2]</div>
+                    <div id="release">json[1]</div>
+                </div>
+            </li>```
+
+    </script>
+
+</body>
+
+</html>

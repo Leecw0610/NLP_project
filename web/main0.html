@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js" defer></script>
+
+
+    <link rel="stylesheet" href="./static/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="./static/js/main.js" defer></script>
+
     <title>main0</title>
 </head>
 
@@ -17,7 +21,7 @@
 
     <div id="box">
         <div id="search-box">
-            <h1 id="title" class="animated swing">
+            <h1 id="title">
                 <span>L</span><span>y</span><span>r</span><span>i</span><span>c</span><span>l</span><span>e</span>
             </h1>
             <form>
@@ -25,42 +29,103 @@
                 <input id="search-btn" type="submit" value="검색" />
             </form>
         </div>
-        <!-- <div id="spinner-box">
+        <div id="spinner-box">
             <i id="spinner" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-        </div> -->
-        <!-- <img src="https://static.wixstatic.com/media/c837a6_d716e461cc424c3c926ed4a2e81779e6~mv2.gif" alt="Episodes"
-        style="width:170px;height:169px;object-fit:cover" fetchpriority="high"> -->
-        <!-- <div id="search-result">
-            <ul id="music-result">
-                {{#each musics}}
-                <li class="music-box">
-                    <img class="img" src={{image}}>
-                    <div class="info">
-                        <h3 class="info-color">{{title}} <span>{{singer}}</span></h3>
-                        <p class="info-color info-linehight">{{attrs.lyric}} / {{attrs.genre}} / {{attrs.pubdate}}</p> -->
-        <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
-        <!-- </div>
-                </li>
-                {{/each}}
-            </ul>
-        </div> -->
+        </div>
+        <div id="search-result">
+            <!-- <li class="music-box" , style="background: rgb(255, 110, 110);">
+                <img class="img"
+                    src="http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/796/229/80796229_1457442236845_1_600x600.JPG">
+                <div class="info">
+                    <h3 class="info-color">한숨 <span>이하이</span></h3>
+                    <p class="info-color info-linehight">숨을 크게 쉬어봐요
+                        당신의 가슴 양쪽이 저리게
+                        조금은 아파올 때까지
+                        숨을 더 뱉어봐요</p>
+                    <div id="genre">R&B</div>
+                    <div id="release">2016.03.09</div>
+                </div>
+            </li> -->
+        </div>
     </div>
-
-
+    <!-- <div id="FollowUs">
+        <div id="image-box1">
+            <img src="./static/image/image_followus.jpg">
+            <p></p>
+        </div>
+    </div>
+    <div id="promotion">
+        <div id="image-box2">
+            <div>
+                <img src="./static/image/promotion01.jpg">
+            </div>
+            <div>
+                <img src="./static/image/promotion02.jpg">
+            </div>
+            <div>
+                <img src="./static/image/promotion03.jpg">
+            </div>
+            <div>
+                <img src="./static/image/promotion04.jpg">
+            </div>
+        </div>
+        <div id="add-image1">
+            <img src="./static/image/add-image1.jpg">
+        </div>
+        <div id="add-image2">
+            <img src="./static/image/add-image2.png">
+        </div>
+    </div>
+    <div id="footer">
+        <div id="introduce">
+            <p></p>
+            <img src="">
+        </div>
+        <div id="menu">
+            <div id="connectSearch"></div>
+        </div>
+        <div id="contact">
+            <div id="emailAddress"></div>
+            <div id="iconCollection"></div>
+            <div id="icon1"><img src="./static/image/icon_facebook.png">
+            </div>
+            <div id="icon2"><img src="./static/image/icon_instagram.png">
+            </div>
+            <div id="icon3"><img src="./static/image/icon_twitter.png">
+            </div>
+            <div id="icon4"><img src="./static/image/icon_youtube.png">
+            </div>
+        </div>
+        <div id="linkCollection">
+            <div>
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+    <div id="bottomEnd">
+        <p>@ 2023 by the Lyricle. Powered and secured by SESAC</p>
+    </div> -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script type="text/x-handlebars-template" id="musics-template">
         <ul id="music-result">
         {{#each musics}}
           <li class="music-box">
-            <img class="img" src={{image}}>
+            <img class="img" src={{이미지}}>
             <div class="info">
-              <h3 class="info-color">{{title}} <span>{{singer}}</span></h3>
-              <p class="info-color info-linehight">{{attrs.lyric}} / {{attrs.genre}} / {{attrs.pubdate}}</p>
-              <!-- <p class="info-color info-linehight">score：{{rating.average}} ({{rating.numRaters}}personal_eval)</p> -->
+              <h3 class="info-color">{{title}} <span>{{alt_title}}</span></h3>
+              <p class="info-color info-linehight">{{attrs.media}} / {{attrs.publisher}} / {{attrs.pubdate}} / {{tags.5.name}} / {{attrs.version}} / {{attrs.singer}}</p>
             </div>
           </li>
         {{/each}}
         </ul>
     </script>
+
 </body>
 
 </html>
